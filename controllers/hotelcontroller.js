@@ -47,6 +47,19 @@ db.createhotel=async( name, city, full_address, noof_rooms, hoteltype_id, userna
     }
 
 
+    db.deletehoteltype=()=>{
+        return new Promise((resolve,reject)=>{
+            conn.query("Truncate table hotel_type",(err,results)=>{
+               if(err){
+                   return reject(err);
+               } 
+               return resolve(results);
+            }) 
+        })
+        
+        }
+
+
     db.updatehotelbyid=(hotel_id, name, city, full_address, noof_rooms, phone, email)=>{
         return new Promise((resolve,reject)=>{
             conn.query("update hotel set name=?, city=?, full_address=?, noof_rooms=?, phone=?, email=? where hotel_id=?",[name, city, full_address, noof_rooms, phone, email, hotel_id],(err,result)=>{

@@ -15,6 +15,20 @@ db.hoteltype=async( hoteltype_name)=>{
 }
 )}
 
+db.deletehoteltype=()=>{
+    return new Promise((resolve,reject)=>{
+        conn.query("Truncate table hotel_type",(err,results)=>{
+           if(err){
+               return reject(err);
+           } 
+           return resolve(results);
+        }) 
+    })
+    
+    }
+
+
+
 
 db.fetchhoteltype=()=>{
     return new Promise((resolve,reject)=>{
